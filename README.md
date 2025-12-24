@@ -20,6 +20,13 @@ Canvas Planner is an AI-ready task canvas that pulls tasks from Notion and Todoi
 ## Current status
 This is the first documentation pass to outline the vision, plan, and constraints. Implementation will follow in small, testable steps.
 
+## What I need from you
+- The Notion database you want synced first and permission to create a Notion integration with read access.
+- Whether to reuse an existing Todoist project or create a new "Canvas Planner" project, and if labels/filters should mirror.
+- The fields you care most about seeing on each task box (e.g., due date, status, priority, tags).
+- If you prefer immediate sync on edit or a "Sync" button to push changes.
+- Any visual references you like for a futuristic 2026-style interface.
+
 ## Key docs
 - **ARCHITECTURE.md**: Technical overview and design decisions.
 - **CHANGELOG.md**: Versioned history of changes.
