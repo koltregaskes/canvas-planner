@@ -11,14 +11,21 @@ Canvas Planner is an AI-ready task canvas that pulls tasks from Notion and Todoi
 - Aims for quick edit/create actions directly in the canvas.
 - Built with an AI-first mindset (automation, summarization, smart defaults).
 
+## What exists right now
+- A simple local server (no installs needed) that serves the canvas and a starter API.
+- A canvas UI that shows task cards, lets you drag them, filter by source/level/status, and toggle which fields you see.
+- A quick-create form to add a new task; it saves to a local JSON file for now.
+
 ## How to get started
 1. Read **SETUP.md** for environment preparation.
-2. See **ARCHITECTURE.md** for the technical plan.
-3. Follow **USAGE.md** once features land (we will keep it updated).
-4. Track progress in **PLAN.md**.
+2. Run the local server (see SETUP/USAGE for the command) and open the canvas in your browser.
+3. See **ARCHITECTURE.md** for the technical plan.
+4. Follow **USAGE.md** for the canvas controls and create flow.
+5. Track progress in **PLAN.md**.
 
 ## Current status
-This is the first documentation pass to outline the vision, plan, and constraints. Implementation will follow in small, testable steps.
+- ✅ Local canvas experience with drag, filter, and create.
+- 🚧 Upcoming: live Notion/Todoist sync and AI helpers.
 
 ## What I need from you
 - The Notion database you want synced first and permission to create a Notion integration with read access.

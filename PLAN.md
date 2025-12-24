@@ -4,9 +4,10 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 
 ## Done
 - ✅ Documented project vision and setup basics (this commit).
+- ✅ Scaffolded a local Node server with a drag-and-drop canvas, filters, and create form that writes to `data/tasks.json`.
 
 ## Now
-- 🔍 Confirm front-end stack (Next.js + React + canvas library like Konva) and pick a UI kit that fits a 2026 aesthetic.
+- 🚧 Test the canvas locally with your tasks to see if the layout and controls feel right.
 - 🔍 Validate Notion/Todoist API limits and webhook capabilities; note any quota edge cases.
 
 ## What I need from you
@@ -17,8 +18,7 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 - Any design references you like for a 2026-style UI (so the canvas theme matches your taste).
 
 ## Next
-- 🟢 Scaffold frontend with canvas placeholder and modern design system tokens.
-- 🟢 Scaffold backend API with health check, config loader, and logging.
+- 🟢 Migrate the canvas to React/Next.js for richer zoom/pan and accessibility.
 - 🟢 Add Notion read-only sync for a single database; normalize into UnifiedTask.
 - 🟢 Add Todoist read-only sync and merge into UnifiedTask list.
 - 🟢 Persist LayoutState and settings in the backend.
@@ -35,3 +35,4 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 ## History
 - 2024-06-09: Initial planning docs added.
 - 2024-06-10: Added list of info needed from you to begin integrations and UI fit.
+- 2024-06-11: Added runnable canvas prototype with filters and create form.

@@ -1,22 +1,21 @@
 # Setup
 
-This project is in early planning. Follow these steps to get ready:
+Follow these steps to get the current prototype running locally:
 
-1. **Install tools (planned stack):** Node.js (LTS), pnpm or npm, and Git.
+1. **Install tools:** Node.js 18+ and Git. No extra packages are required yet.
 2. **Clone the repo:**
    ```bash
    git clone <repo-url>
    cd canvas-planner
    ```
-3. **Create a `.env` file (do not commit):**
-   - `NOTION_TOKEN=` (internal integration token with access to the target database)
-   - `NOTION_DATABASE_ID=` (the database that stores your tasks)
-   - `TODOIST_TOKEN=` (personal API token)
-   - `APP_BASE_URL=` (used for webhooks later)
-4. **Package install:** Once the codebase is scaffolded, run `pnpm install` (or `npm install`).
-5. **Dev server:** We will add `pnpm dev` (or similar) after scaffolding the frontend/backend.
+3. **Start the local server:**
+   ```bash
+   npm start
+   ```
+   This starts a lightweight Node server that serves the canvas UI and a starter `/api/tasks` endpoint.
+4. **Open the app:** Visit http://localhost:3000 to see the canvas, filters, and quick-create form.
 
 ## Notes
-- Use minimal scopes for Notion and Todoist tokens.
-- Keep `.env` out of version control.
-- As features land, this file will list exact commands and scripts.
+- Data saves to `data/tasks.json` for now; it is safe to edit or reset.
+- Keep future secrets (Notion/Todoist tokens) in a `.env` file; do not commit it.
+- We will add automated linting, tests, and AI checks (llm.tst) as we integrate APIs.

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "notion-1",
+    "title": "Canvas blueprint: map Notion fields",
+    "source": "notion",
+    "level": "project",
+    "status": "in-progress",
+    "priority": "high",
+    "dueDate": "2024-07-01",
+    "tags": ["notion", "mapping"],
+    "parentId": null
+  },
+  {
+    "id": "notion-2",
+    "title": "Define synced properties (status, priority, due)",
+    "source": "notion",
+    "level": "task",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2024-07-03",
+    "tags": ["fields"],
+    "parentId": "notion-1"
+  },
+  {
+    "id": "todoist-1",
+    "title": "Collect Todoist labels to mirror",
+    "source": "todoist",
+    "level": "task",
+    "status": "in-progress",
+    "priority": "medium",
+    "dueDate": "2024-06-28",
+    "tags": ["todoist"],
+    "parentId": null
+  },
+  {
+    "id": "canvas-1",
+    "title": "Design canvas interactions (drag, stack, zoom)",
+    "source": "canvas",
+    "level": "project",
+    "status": "todo",
+    "priority": "high",
+    "dueDate": null,
+    "tags": ["design"],
+    "parentId": null
+  },
+  {
+    "id": "canvas-2",
+    "title": "Prototype quick create flow",
+    "source": "canvas",
+    "level": "task",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2024-07-05",
+    "tags": ["ux"],
+    "parentId": "canvas-1"
+  }
+]
