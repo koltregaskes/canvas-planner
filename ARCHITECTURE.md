@@ -20,7 +20,7 @@ This document explains how the Canvas Planner works today and where it is headed
 - **Settings:** User preferences for visible fields, filters, and AI assistance level.
 
 ## Key flows
-1. **Serve & view (today):** Node serves static assets and `/api/tasks`. The browser renders tasks and saves layout locally.
+1. **Serve & view (today):** Node serves static assets and `/api/tasks`. The browser renders tasks and saves layout locally. If no API is reachable (e.g., GitHub Pages), the UI loads demo tasks from `public/data/tasks.json` and any drafts stored in `localStorage`.
 2. **Create (today):** Form POSTs to `/api/tasks`; the server validates fields and writes them to `data/tasks.json`.
 3. **Ingest & normalize (planned):** Sync service fetches tasks from Notion/Todoist, normalizes them into UnifiedTask, and stores them.
 4. **Canvas render (planned):** React canvas reads UnifiedTask plus LayoutState, renders draggable nested boxes, and persists layout changes to the backend.
@@ -39,6 +39,11 @@ This document explains how the Canvas Planner works today and where it is headed
 - **Unit tests:** For sync, normalization, and UI utilities.
 - **E2E tests:** Simulate drag/drop, filtering, and edit/create flows.
 - **Performance:** Debounce canvas updates and batch API calls to respect rate limits.
+
+## Deployment notes
+- **Local-first:** Run `npm install` once, then `npm start` to launch the server.
+- **GitHub Pages:** Works as a static preview with read-only demo data and local drafts. When an API becomes reachable, the UI will switch to live mode automatically.
+- **Cloud (next):** Deploy the Node server to Fly/Render/Railway with a database (e.g., Supabase). Secrets needed: Notion integration token + database IDs, Todoist token, and DB credentials.
 
 ## Security & privacy
 - Store tokens in `.env` files, not in code.

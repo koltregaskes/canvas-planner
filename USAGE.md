@@ -6,12 +6,13 @@ This guide explains what works today and what is coming next.
 - **View tasks on a canvas:** Cards show sample tasks from Notion, Todoist, and Canvas sources. Drag them to rearrange.
 - **Filter views:** Toggle source, level (project/task/subtask), status, and search by title or tag.
 - **Visible fields:** Turn due date, priority, and source labels on/off without a page reload.
-- **Create tasks:** Use the form on the right to add a task. It saves to `data/tasks.json` locally.
+- **Create tasks:** Use the form on the right to add a task. If the API is live, it saves to `data/tasks.json`; if not, it saves to your browser so you do not lose work.
 - **Layout controls:** Reset layout, switch auto/manual layout, and double-click a card to focus it.
 
 ## How to run
 - Start the app: `npm start`
 - Open: http://localhost:3000
+- GitHub Pages: once enabled in repo settings, open your Pages URL to see the static preview (demo data + your browser drafts).
 
 ## Coming soon
 - **Edit inline:** Click a card to edit its fields and sync back to Notion/Todoist.

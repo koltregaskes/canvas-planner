@@ -5,14 +5,18 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 ## Done
 - ✅ Documented project vision and setup basics (this commit).
 - ✅ Scaffolded a local Node server with a drag-and-drop canvas, filters, and create form that writes to `data/tasks.json`.
+- ✅ Added a GitHub Pages-friendly static preview with fallback demo data and local drafts.
 
 ## Now
 - 🚧 Test the canvas locally with your tasks to see if the layout and controls feel right.
+- 🚧 Turn on GitHub Pages (Settings → Pages → main branch, root) so you can see the static preview live.
 - 🔍 Validate Notion/Todoist API limits and webhook capabilities; note any quota edge cases.
 
 ## What I need from you
+- Turn on GitHub Pages (main branch, root) so you can see the live static preview URL.
 - Which Notion database to start with (a shareable link or the database name) and permission to create a Notion integration with "read content" scope.
-- Your Todoist account email and whether I should create a new "Canvas Planner" project or reuse an existing one; confirm if labels/filters should be mirrored.
+- Todoist: your account email and whether I should create a new "Canvas Planner" project or reuse an existing one; confirm if labels/filters should be mirrored.
+- Secrets (when ready): Notion integration token + database ID, Todoist token; we will place them in `.env` and never commit.
 - Any must-have fields you want visible on the boxes (e.g., due date, status, project, priority, tags).
 - Whether task edits/creates should sync back immediately or only after you press a "Sync" button.
 - Any design references you like for a 2026-style UI (so the canvas theme matches your taste).

@@ -24,10 +24,34 @@ const createForm = document.getElementById('createForm');
 const settingsButton = document.getElementById('openSettings');
 
 async function loadTasks() {
-  const response = await fetch('/api/tasks');
-  const payload = await response.json();
-  state.tasks = payload.tasks || [];
+  const localOnly = readLocalTasks();
+  try {
+    const response = await fetch('/api/tasks', { cache: 'no-store' });
+    if (!response.ok) throw new Error('API unavailable');
+    const payload = await response.json();
+    const apiTasks = payload.tasks || [];
+    state.tasks = [...apiTasks, ...localOnly];
+    setStatus('Live API connected');
+  } catch (error) {
+    console.warn('Falling back to static data', error);
+    const fallback = await loadStaticTasks();
+    state.tasks = [...fallback, ...localOnly];
+    setStatus('Static preview: enable the server for live data');
+  }
+
   renderCards();
+}
+
+async function loadStaticTasks() {
+  try {
+    const response = await fetch('/data/tasks.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Static tasks missing');
+    const payload = await response.json();
+    return payload.tasks || [];
+  } catch (error) {
+    console.warn('Could not load static tasks', error);
+    return [];
+  }
 }
 
 function filteredTasks() {
@@ -213,35 +237,68 @@ function setupForm() {
           .filter(Boolean)
       : [];
 
+    const draft = {
+      title: payload.title,
+      source: payload.source,
+      level: payload.level,
+      status: payload.status,
+      priority: payload.priority,
+      dueDate: payload.dueDate || null,
+      tags,
+    };
+
+    const saved = await persistTask(draft);
+    createForm.reset();
+    if (saved.via === 'local') {
+      alert('Saved locally. Start the Node server or deploy an API to sync.');
+    }
+    await loadTasks();
+  });
+}
+
+async function persistTask(draft) {
+  try {
     const response = await fetch('/api/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        title: payload.title,
-        source: payload.source,
-        level: payload.level,
-        status: payload.status,
-        priority: payload.priority,
-        dueDate: payload.dueDate || null,
-        tags,
-      }),
+      body: JSON.stringify(draft),
     });
 
-    if (!response.ok) {
-      const error = await response.json();
-      alert(`Could not create task: ${error.error || 'unknown error'}`);
-      return;
-    }
-
-    createForm.reset();
-    await loadTasks();
-  });
+    if (!response.ok) throw new Error('api write failed');
+    return { via: 'api' };
+  } catch (error) {
+    console.warn('Storing task locally because API is offline', error);
+    const local = {
+      ...draft,
+      id: `local-${Date.now()}`,
+      createdAt: new Date().toISOString(),
+    };
+    const existing = readLocalTasks();
+    localStorage.setItem('canvas-local-tasks', JSON.stringify([...existing, local]));
+    return { via: 'local' };
+  }
 }
 
 function setupSettings() {
   settingsButton.addEventListener('click', () => {
     alert('Settings panel coming soon. Today you can filter, rearrange, and create tasks.');
   });
+}
+
+function setStatus(message) {
+  const el = document.getElementById('statusMessage');
+  if (!el) return;
+  el.textContent = message;
+}
+
+function readLocalTasks() {
+  try {
+    const saved = localStorage.getItem('canvas-local-tasks');
+    return saved ? JSON.parse(saved) : [];
+  } catch (error) {
+    console.warn('Could not read local tasks', error);
+    return [];
+  }
 }
 
 function init() {

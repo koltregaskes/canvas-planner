@@ -7,6 +7,11 @@ Common issues to watch for as we build the project.
 - **Blank page:** Ensure you opened http://localhost:3000 and that `npm start` is still running in your terminal.
 - **Data not saving:** Check file permissions for `data/tasks.json`; the server writes new tasks there.
 
+## GitHub Pages preview
+- **Site not visible:** In GitHub, open **Settings → Pages** and choose the `main` branch and `/ (root)` folder. Save and wait a minute.
+- **“Static preview” status:** This means the page is running without an API. It will still load demo tasks and your browser drafts.
+- **Cannot save to server:** You need the Node API running somewhere reachable (local tunnel or hosted). Until then, tasks save locally in the browser.
+
 ## API access problems
 - **Notion auth failures:** Check `NOTION_TOKEN` and database permissions. Notion limits requests (~3/sec) so space calls out or enable batching.
 - **Todoist rate limit (HTTP 429):** Slow down to ~50 requests/minute or use incremental sync endpoints.

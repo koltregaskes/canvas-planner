@@ -20,6 +20,7 @@
         <div class="header-actions">
           <button id="refreshTasks" class="ghost">Refresh tasks</button>
           <button id="openSettings" class="solid">Settings</button>
+          <span id="statusMessage" class="status-chip">Connecting…</span>
         </div>
       </header>
 
@@ -76,7 +77,7 @@
         <section class="panel">
           <div class="panel-heading">
             <h2>Create or edit</h2>
-            <p class="hint">Add quick tasks to the canvas. They save locally for now.</p>
+            <p class="hint">Add quick tasks to the canvas. They sync when the server is live, or stay local if offline.</p>
           </div>
           <form id="createForm" class="form-grid">
             <label>Title <input name="title" required placeholder="e.g., Sketch layout for project hub" /></label>

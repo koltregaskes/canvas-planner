@@ -13,3 +13,8 @@
 - Added a runnable Node server (no extra installs) that serves a drag-and-drop canvas UI and starter `/api/tasks` endpoint.
 - Implemented filters, field toggles, and a quick-create form that saves tasks to `data/tasks.json`.
 - Updated docs (README/SETUP/USAGE/PLAN/ARCHITECTURE/TROUBLESHOOTING) to explain how to run and what works now.
+
+## 0.2.1 - 2024-06-12
+- Added GitHub Pages-friendly static preview with demo data and local drafts when the API is offline.
+- Added visual status indicator plus safer task creation that stores drafts locally if the server is down.
+- Documented how to enable Pages, what secrets will be needed, and how to view the live preview.
