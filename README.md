@@ -16,6 +16,7 @@ Canvas Planner is an AI-ready task canvas that pulls tasks from Notion and Todoi
 - A canvas UI that shows task cards, lets you drag them, filter by source/level/status, and toggle which fields you see.
 - A quick-create form to add a new task; it saves to a local JSON file when the API is running, or to your browser when offline.
 - A GitHub Pages-friendly static preview that loads demo tasks and your local drafts even if the API is not live yet. Assets now respect the repo path (e.g., `/canvas-planner/`) so cards appear on Pages.
+- A clear cost and limit guide (COSTS.md) so you know what each API will cost and how many calls we expect per sync.
 
 ## How to get started (step-by-step, no jargon)
 1. **Install one thing:** [Node.js 18+](https://nodejs.org/en/download) (it already includes `npm`). If you do not have Git, [install it](https://git-scm.com/downloads) too.
@@ -37,6 +38,7 @@ Canvas Planner is an AI-ready task canvas that pulls tasks from Notion and Todoi
    - Add `TODOIST_TOKEN=<your_token>` after creating a token at [Todoist app settings → Integrations → Developer](https://todoist.com/prefs/integrations).
    - When these are present and the API is wired up, the server will read them automatically (no code changes needed).
 7. **Need more detail?** See **SETUP.md** for screenshots/links, **USAGE.md** for controls, **ARCHITECTURE.md** for the tech plan, and **PLAN.md** for progress.
+8. **Wondering about costs?** Check **COSTS.md** to see expected API limits, call counts, and hosting notes.
 
 ## Current status
 - ✅ Local canvas experience with drag, filter, and create.

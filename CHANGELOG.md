@@ -26,3 +26,8 @@
 ## 0.2.3 - 2024-06-14
 - Simplified "How to get started" with step-by-step setup, live URL guidance, and where to place Notion/Todoist secrets.
 - Expanded SETUP with `.env` instructions and direct links to token sources.
+
+## 0.2.4 - 2024-06-15
+- Added COSTS.md covering hosting expectations plus Notion and Todoist API limits/call estimates.
+- Linked the cost guide from the README for easy discovery.
+- Logged the new research in PLAN history and updated the task list.

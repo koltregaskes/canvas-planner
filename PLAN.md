@@ -8,11 +8,12 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 - ✅ Added a GitHub Pages-friendly static preview with fallback demo data and local drafts.
 - ✅ Fixed GitHub Pages asset paths so demo cards load at `/<repo>/`, and added a blank-state message.
 - ✅ Added a dummy-proof "How to get started" with secret placement instructions.
+- ✅ Documented Notion and Todoist API limits plus hosting costs (COSTS.md) so you know what to expect.
 
 ## Now
 - 🚧 Test the canvas locally with your tasks to see if the layout and controls feel right.
 - 🚧 Turn on GitHub Pages (Settings → Pages → main branch, root) so you can see the static preview live.
-- 🔍 Validate Notion/Todoist API limits and webhook capabilities; note any quota edge cases.
+- 🔍 Outline webhook options for Notion/Todoist to keep sync live without hitting limits.
 
 ## What I need from you
 - Turn on GitHub Pages (main branch, root) so you can see the live static preview URL.
@@ -44,3 +45,4 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 - 2024-06-11: Added runnable canvas prototype with filters and create form.
 - 2024-06-13: Fixed GitHub Pages asset paths and added empty-state guidance for the canvas.
 - 2024-06-14: Added step-by-step getting-started and secrets guidance for Notion/Todoist.
+- 2024-06-15: Documented API costs/limits and hosting expectations.
