@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Planner</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="branding">
+          <div class="glow"></div>
+          <div>
+            <p class="eyebrow">AI-first canvas</p>
+            <h1>Canvas Planner</h1>
+            <p class="lede">Drag, filter, and create tasks synced from Notion and Todoist.</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="refreshTasks" class="ghost">Refresh tasks</button>
+          <button id="openSettings" class="solid">Settings</button>
+          <span id="statusMessage" class="status-chip">Connecting…</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Filters</h2>
+            <p class="hint">Pick what you want to see on the canvas.</p>
+          </div>
+          <div class="filters">
+            <div class="filter-group">
+              <p class="label">Sources</p>
+              <label><input type="checkbox" data-filter="source" value="notion" checked /> Notion</label>
+              <label><input type="checkbox" data-filter="source" value="todoist" checked /> Todoist</label>
+              <label><input type="checkbox" data-filter="source" value="canvas" checked /> Canvas</label>
+            </div>
+            <div class="filter-group">
+              <p class="label">Levels</p>
+              <label><input type="checkbox" data-filter="level" value="project" checked /> Projects</label>
+              <label><input type="checkbox" data-filter="level" value="task" checked /> Tasks</label>
+              <label><input type="checkbox" data-filter="level" value="subtask" checked /> Subtasks</label>
+            </div>
+            <div class="filter-group">
+              <p class="label">Status</p>
+              <label><input type="checkbox" data-filter="status" value="todo" checked /> Todo</label>
+              <label><input type="checkbox" data-filter="status" value="in-progress" checked /> Doing</label>
+              <label><input type="checkbox" data-filter="status" value="done" checked /> Done</label>
+            </div>
+            <div class="filter-group">
+              <p class="label">Search</p>
+              <input id="searchInput" type="search" placeholder="Search by title or tag" />
+            </div>
+            <div class="filter-group">
+              <p class="label">Visible fields</p>
+              <label><input type="checkbox" data-field="dueDate" checked /> Due date</label>
+              <label><input type="checkbox" data-field="priority" checked /> Priority</label>
+              <label><input type="checkbox" data-field="source" checked /> Source</label>
+            </div>
+            <div class="actions-inline">
+              <button id="resetLayout" class="ghost">Reset layout</button>
+              <button id="toggleAutoLayout" class="ghost">Auto layout</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="canvas-panel">
+          <div class="panel-heading">
+            <h2>Canvas</h2>
+            <p class="hint">Drag cards anywhere. Double-click a card to focus.</p>
+          </div>
+          <div id="canvas" class="canvas" aria-live="polite"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Create or edit</h2>
+            <p class="hint">Add quick tasks to the canvas. They sync when the server is live, or stay local if offline.</p>
+          </div>
+          <form id="createForm" class="form-grid">
+            <label>Title <input name="title" required placeholder="e.g., Sketch layout for project hub" /></label>
+            <label>Source
+              <select name="source">
+                <option value="canvas">Canvas</option>
+                <option value="notion">Notion</option>
+                <option value="todoist">Todoist</option>
+              </select>
+            </label>
+            <label>Level
+              <select name="level">
+                <option value="task">Task</option>
+                <option value="project">Project</option>
+                <option value="subtask">Subtask</option>
+              </select>
+            </label>
+            <label>Status
+              <select name="status">
+                <option value="todo">Todo</option>
+                <option value="in-progress">In progress</option>
+                <option value="done">Done</option>
+              </select>
+            </label>
+            <label>Priority
+              <select name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+            <label>Due date <input name="dueDate" type="date" /></label>
+            <label>Tags (comma separated) <input name="tags" placeholder="design, ux" /></label>
+            <button type="submit" class="solid">Create task</button>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
