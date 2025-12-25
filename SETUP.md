@@ -9,6 +9,7 @@ Follow these steps to get the current prototype running locally:
    ```bash
    git clone <repo-url>
    cd canvas-planner
+   npm install
    ```
 3. **Run it locally:**
    ```bash
@@ -19,7 +20,7 @@ Follow these steps to get the current prototype running locally:
 4. **Open the app:** Visit http://localhost:3000 to use the canvas, filters, and quick-create form.
 
 ## Secrets (for Notion and Todoist later)
-- Create a file named `.env` in the project root (same folder as `package.json`). Do **not** commit this file.
+- Copy `.env.example` to `.env` in the project root (same folder as `package.json`). Do **not** commit this file.
 - Add these lines when you have tokens:
   ```env
   NOTION_TOKEN=your_notion_token
@@ -38,6 +39,10 @@ Follow these steps to get the current prototype running locally:
 3. The static site will go live with demo tasks. Open the full repo path (example: `https://<username>.github.io/canvas-planner/`).
    Creating tasks will stay in your browser until the API is online.
 4. When you later deploy the Node server, the page will automatically switch to live mode and save tasks to the server.
+
+## Quick checks (optional)
+- Syntax: `npm run check` (ensures the server entry point parses).
+- Accessibility: `npm run a11y` (runs static HTML checks; no server needed). If it fails, read the message and adjust `public/index.html`.
 
 ## Notes
 - Data saves to `data/tasks.json` for now; it is safe to edit or reset.

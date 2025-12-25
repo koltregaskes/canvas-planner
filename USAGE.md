@@ -12,6 +12,7 @@ This guide explains what works today and what is coming next.
 ## How to run
 - Start the app: `npm start`
 - Open: http://localhost:3000
+- Optional checks: `npm run check` (syntax) and `npm run a11y` (static accessibility scan; no server needed).
 - GitHub Pages: once enabled in repo settings, open your Pages URL with the repo path (example: `https://<username>.github.io/canvas-planner/`) to see the static preview (demo data + your browser drafts).
 
 ## Coming soon

@@ -6,12 +6,16 @@ Common issues to watch for as we build the project.
 - **Port already in use:** Change `PORT` in the environment before running `npm start`, or stop the other app on port 3000.
 - **Blank page:** Ensure you opened http://localhost:3000 and that `npm start` is still running in your terminal.
 - **Data not saving:** Check file permissions for `data/tasks.json`; the server writes new tasks there.
+- **`npm start` fails:** Run `npm install` again to ensure dependencies are present; use Node 18+.
 
 ## GitHub Pages preview
 - **Site not visible:** In GitHub, open **Settings → Pages** and choose the `main` branch and `/ (root)` folder. Save and wait a minute.
 - **Page is blank on Pages:** Make sure you include the repo path (example: `https://<username>.github.io/canvas-planner/`). Direct domain root will 404 the assets.
 - **“Static preview” status:** This means the page is running without an API. It will still load demo tasks and your browser drafts.
 - **Cannot save to server:** You need the Node API running somewhere reachable (local tunnel or hosted). Until then, tasks save locally in the browser.
+
+## Accessibility check failures
+- If `npm run a11y` reports missing labels or `aria-live`, open `public/index.html` and add a label or aria-label to the input/button mentioned. Re-run the command until it passes.
 
 ## API access problems
 - **Notion auth failures:** Check `NOTION_TOKEN` and database permissions. Notion limits requests (~3/sec) so space calls out or enable batching.

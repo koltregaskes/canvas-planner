@@ -1,12 +1,13 @@
 {
   "name": "canvas-planner",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Canvas Planner is an AI-ready task canvas that pulls tasks from Notion and Todoist, then shows them as moveable boxes on a modern, easy-to-use canvas. You can filter, rearrange, and edit tasks directly from the interface while keeping everything in sync.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node src/server.js",
-    "check": "node -c src/server.js"
+    "check": "node -c src/server.js",
+    "a11y": "node scripts/a11y-check.js"
   },
   "keywords": [
     "tasks",

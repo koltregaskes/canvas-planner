@@ -9,10 +9,12 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 - ✅ Fixed GitHub Pages asset paths so demo cards load at `/<repo>/`, and added a blank-state message.
 - ✅ Added a dummy-proof "How to get started" with secret placement instructions.
 - ✅ Documented Notion and Todoist API limits plus hosting costs (COSTS.md) so you know what to expect.
+- ✅ Added AI-helper onboarding (AGENTS.md, llms.txt) and a static accessibility check script (`npm run a11y`).
 
 ## Now
 - 🚧 Test the canvas locally with your tasks to see if the layout and controls feel right.
 - 🚧 Turn on GitHub Pages (Settings → Pages → main branch, root) so you can see the static preview live.
+- 🚧 Run the new accessibility check (`npm run a11y`) after any UI tweaks to keep WCAG 2.2 AA on track.
 - 🔍 Outline webhook options for Notion/Todoist to keep sync live without hitting limits.
 
 ## What I need from you
@@ -46,3 +48,4 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 - 2024-06-13: Fixed GitHub Pages asset paths and added empty-state guidance for the canvas.
 - 2024-06-14: Added step-by-step getting-started and secrets guidance for Notion/Todoist.
 - 2024-06-15: Documented API costs/limits and hosting expectations.
+- 2024-06-16: Added AI helper instructions, .env.example, and an accessibility check script + docs.

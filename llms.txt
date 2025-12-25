@@ -1,0 +1,30 @@
+Canvas Planner — quick onboarding for AI helpers
+
+1) Purpose
+- Visual canvas for tasks from Notion, Todoist, and local drafts. Static site served by Node server; works on GitHub Pages (subpath-safe).
+
+2) Key entry points
+- UI: public/index.html, public/styles.css, public/app.js
+- Data seeds: public/data/tasks.json (static) and data/tasks.json (server write target)
+- Server: src/server.js (serves static files + /api/tasks)
+- Docs: README.md (getting started), SETUP.md (env + tokens), USAGE.md (feature guide), ARCHITECTURE.md (how pieces fit), ACCESSIBILITY.md (WCAG targets & checks), PLAN.md (roadmap/history), CHANGELOG.md (versions), COSTS.md (limits & call estimates)
+
+3) Run commands (from repo root)
+- Install: npm install
+- Dev server: npm start (serves public/ on http://localhost:3000)
+- Quick syntax check: npm run check
+- Accessibility sweep (server must be running): npm run a11y
+
+4) Secrets and config
+- Copy .env.example to .env for NOTION_TOKEN, NOTION_DATABASE_ID, TODOIST_TOKEN. Never commit real values.
+
+5) Conventions
+- Plain English docs; keep updates small. Accessibility target WCAG 2.2 AA with visible focus and labels. Keep repo-path-safe URLs for GitHub Pages. Avoid heavy dependencies; note costs/limits in COSTS.md.
+
+6) Common tasks
+- Add UI features in public/app.js + styles.css; prefer semantic HTML with ARIA labels.
+- Update docs and version in CHANGELOG.md whenever behaviour changes.
+- For new endpoints, extend src/server.js; persist to data/tasks.json.
+
+7) Testing tips
+- Run npm run check after changes. For UI accessibility, run npm start in one terminal, then npm run a11y in another. If pa11y reports errors, fix labels/focus/contrast.

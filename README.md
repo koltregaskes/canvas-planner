@@ -24,21 +24,25 @@ Canvas Planner is an AI-ready task canvas that pulls tasks from Notion and Todoi
    ```bash
    git clone <your-repo-url>
    cd canvas-planner
+   npm install
    ```
 3. **Start the app:** run `npm start`. Leave this window open; it serves the site and a small task API.
 4. **Open the canvas:** go to http://localhost:3000 in your browser. You should see demo tasks you can drag, filter, and create.
-5. **See it live on GitHub Pages (no server needed):**
+5. **Run quick checks (optional but helpful):**
+   - Syntax check: `npm run check`.
+   - Accessibility check: in the same folder run `npm run a11y` (no server needed). This runs a simple static audit to flag missing labels or live regions.
+6. **See it live on GitHub Pages (no server needed):**
    - Push the repo to GitHub.
    - In GitHub, open **Settings → Pages**, choose the **main** branch and **/** (root) folder, click Save.
    - Visit the full path with your repo name, e.g., `https://<username>.github.io/canvas-planner/`. Assets only load when the repo name is in the URL.
    - You will see “Static preview” while no API is running; demo tasks and your browser drafts still appear.
-6. **Where secrets will go (for Notion/Todoist later):**
-   - Create a file named `.env` in the project root (same folder as `package.json`). Do **not** commit it.
+7. **Where secrets will go (for Notion/Todoist later):**
+   - Copy `.env.example` to `.env` in the project root (same folder as `package.json`). Do **not** commit it.
    - Add `NOTION_TOKEN=<your_token>` and `NOTION_DATABASE_ID=<your_database_id>` after you create a Notion integration and database. Create integrations at [Notion My Integrations](https://www.notion.so/my-integrations) and find database IDs by opening the database and copying the URL ID part.
    - Add `TODOIST_TOKEN=<your_token>` after creating a token at [Todoist app settings → Integrations → Developer](https://todoist.com/prefs/integrations).
    - When these are present and the API is wired up, the server will read them automatically (no code changes needed).
-7. **Need more detail?** See **SETUP.md** for screenshots/links, **USAGE.md** for controls, **ARCHITECTURE.md** for the tech plan, and **PLAN.md** for progress.
-8. **Wondering about costs?** Check **COSTS.md** to see expected API limits, call counts, and hosting notes.
+8. **Need more detail?** See **SETUP.md** for screenshots/links, **USAGE.md** for controls, **ARCHITECTURE.md** for the tech plan, **ACCESSIBILITY.md** for standards/tests, **AGENTS.md** and **llms.txt** for AI-helper rules, and **PLAN.md** for progress.
+9. **Wondering about costs?** Check **COSTS.md** to see expected API limits, call counts, and hosting notes.
 
 ## Current status
 - ✅ Local canvas experience with drag, filter, and create.
@@ -58,6 +62,8 @@ Canvas Planner is an AI-ready task canvas that pulls tasks from Notion and Todoi
 - **TROUBLESHOOTING.md**: Quick fixes for common issues.
 - **USAGE.md**: How to use the app features.
 - **PLAN.md**: Task list with emoji status markers.
+- **ACCESSIBILITY.md**: Accessibility standard and how to test it.
+- **AGENTS.md / llms.txt**: Rules and onboarding for AI helpers.
 
 ## Security and privacy
 - We will keep API tokens in environment variables, never in code.

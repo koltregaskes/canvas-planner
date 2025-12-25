@@ -35,6 +35,8 @@ This document explains how the Canvas Planner works today and where it is headed
    - Plan a safety review for prompts and output checks.
 
 ## Testing & quality
+- **Syntax check:** `npm run check` validates the Node server entry point.
+- **Static accessibility check:** `npm run a11y` runs a lightweight HTML audit to catch missing labels or aria-live regions (server not required).
 - **llm.tst or similar:** Use to regression-test prompts and AI behaviors.
 - **Unit tests:** For sync, normalization, and UI utilities.
 - **E2E tests:** Simulate drag/drop, filtering, and edit/create flows.

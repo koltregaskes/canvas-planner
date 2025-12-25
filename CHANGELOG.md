@@ -31,3 +31,8 @@
 - Added COSTS.md covering hosting expectations plus Notion and Todoist API limits/call estimates.
 - Linked the cost guide from the README for easy discovery.
 - Logged the new research in PLAN history and updated the task list.
+
+## 0.2.5 - 2024-06-16
+- Added AGENTS.md and llms.txt to onboard AI helpers and capture working rules.
+- Added .env.example and reinforced setup/readme guidance for secrets and commands.
+- Added ACCESSIBILITY.md plus a lightweight `npm run a11y` static check to keep WCAG 2.2 AA on track.
