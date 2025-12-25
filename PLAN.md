@@ -6,6 +6,7 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 - ✅ Documented project vision and setup basics (this commit).
 - ✅ Scaffolded a local Node server with a drag-and-drop canvas, filters, and create form that writes to `data/tasks.json`.
 - ✅ Added a GitHub Pages-friendly static preview with fallback demo data and local drafts.
+- ✅ Fixed GitHub Pages asset paths so demo cards load at `/<repo>/`, and added a blank-state message.
 
 ## Now
 - 🚧 Test the canvas locally with your tasks to see if the layout and controls feel right.
@@ -40,3 +41,4 @@ Emoji legend: ✅ done, 🚧 in progress, 🔍 research, 🟢 planned, ⏸️ bl
 - 2024-06-09: Initial planning docs added.
 - 2024-06-10: Added list of info needed from you to begin integrations and UI fit.
 - 2024-06-11: Added runnable canvas prototype with filters and create form.
+- 2024-06-13: Fixed GitHub Pages asset paths and added empty-state guidance for the canvas.

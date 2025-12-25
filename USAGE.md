@@ -12,7 +12,7 @@ This guide explains what works today and what is coming next.
 ## How to run
 - Start the app: `npm start`
 - Open: http://localhost:3000
-- GitHub Pages: once enabled in repo settings, open your Pages URL to see the static preview (demo data + your browser drafts).
+- GitHub Pages: once enabled in repo settings, open your Pages URL with the repo path (example: `https://<username>.github.io/canvas-planner/`) to see the static preview (demo data + your browser drafts).
 
 ## Coming soon
 - **Edit inline:** Click a card to edit its fields and sync back to Notion/Todoist.

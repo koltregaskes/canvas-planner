@@ -18,3 +18,7 @@
 - Added GitHub Pages-friendly static preview with demo data and local drafts when the API is offline.
 - Added visual status indicator plus safer task creation that stores drafts locally if the server is down.
 - Documented how to enable Pages, what secrets will be needed, and how to view the live preview.
+
+## 0.2.2 - 2024-06-13
+- Fixed GitHub Pages asset paths so demo tasks load at `/<repo>/` URLs and added a canvas empty state for clarity.
+- Updated docs (README/SETUP/USAGE/TROUBLESHOOTING/PLAN) to remind you to open the repo path on Pages and note the new behavior.

@@ -43,6 +43,7 @@ This document explains how the Canvas Planner works today and where it is headed
 ## Deployment notes
 - **Local-first:** Run `npm install` once, then `npm start` to launch the server.
 - **GitHub Pages:** Works as a static preview with read-only demo data and local drafts. When an API becomes reachable, the UI will switch to live mode automatically.
+- **Repo-scoped assets:** The browser resolves assets relative to the current path (e.g., `/canvas-planner/`) so Pages loads cards correctly under repo URLs.
 - **Cloud (next):** Deploy the Node server to Fly/Render/Railway with a database (e.g., Supabase). Secrets needed: Notion integration token + database IDs, Todoist token, and DB credentials.
 
 ## Security & privacy

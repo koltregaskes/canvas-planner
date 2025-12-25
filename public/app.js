@@ -15,6 +15,17 @@ const state = {
   autoLayout: false,
 };
 
+const assetBase = new URL('.', window.location.href);
+const apiBase = new URL('/', window.location.origin);
+
+function assetUrl(path) {
+  return new URL(path.replace(/^\//, ''), assetBase).toString();
+}
+
+function apiUrl(path) {
+  return new URL(path.replace(/^\//, ''), apiBase).toString();
+}
+
 const canvasEl = document.getElementById('canvas');
 const searchInput = document.getElementById('searchInput');
 const refreshButton = document.getElementById('refreshTasks');
@@ -26,7 +37,7 @@ const settingsButton = document.getElementById('openSettings');
 async function loadTasks() {
   const localOnly = readLocalTasks();
   try {
-    const response = await fetch('/api/tasks', { cache: 'no-store' });
+    const response = await fetch(apiUrl('/api/tasks'), { cache: 'no-store' });
     if (!response.ok) throw new Error('API unavailable');
     const payload = await response.json();
     const apiTasks = payload.tasks || [];
@@ -44,7 +55,7 @@ async function loadTasks() {
 
 async function loadStaticTasks() {
   try {
-    const response = await fetch('/data/tasks.json', { cache: 'no-store' });
+    const response = await fetch(assetUrl('data/tasks.json'), { cache: 'no-store' });
     if (!response.ok) throw new Error('Static tasks missing');
     const payload = await response.json();
     return payload.tasks || [];
@@ -90,6 +101,17 @@ function layoutPosition(task, index) {
 function renderCards() {
   canvasEl.innerHTML = '';
   const tasks = filteredTasks();
+  if (!tasks.length) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-state';
+    empty.innerHTML = `
+      <p class="eyebrow">No tasks yet</p>
+      <h3>Try creating a task or enable the API</h3>
+      <p class="hint">If you're viewing the GitHub Pages demo, data loads from the bundled demo file.</p>
+    `;
+    canvasEl.appendChild(empty);
+    return;
+  }
   tasks.forEach((task, index) => {
     const card = document.createElement('article');
     card.className = `card card-${task.level}`;
@@ -258,7 +280,7 @@ function setupForm() {
 
 async function persistTask(draft) {
   try {
-    const response = await fetch('/api/tasks', {
+    const response = await fetch(apiUrl('/api/tasks'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(draft),

@@ -9,6 +9,7 @@ Common issues to watch for as we build the project.
 
 ## GitHub Pages preview
 - **Site not visible:** In GitHub, open **Settings → Pages** and choose the `main` branch and `/ (root)` folder. Save and wait a minute.
+- **Page is blank on Pages:** Make sure you include the repo path (example: `https://<username>.github.io/canvas-planner/`). Direct domain root will 404 the assets.
 - **“Static preview” status:** This means the page is running without an API. It will still load demo tasks and your browser drafts.
 - **Cannot save to server:** You need the Node API running somewhere reachable (local tunnel or hosted). Until then, tasks save locally in the browser.
 
