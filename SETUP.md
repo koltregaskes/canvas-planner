@@ -1,28 +1,54 @@
 # Setup
 
-Follow these steps to get the current prototype running locally:
+## Requirements
+- Node.js 18 or newer
+- Git
 
-1. **Install tools:** Node.js 18+ and Git. No extra packages are required yet.
-2. **Clone the repo:**
-   ```bash
-   git clone <repo-url>
-   cd canvas-planner
-   ```
-3. **Start the local server:**
-   ```bash
-   npm start
-   ```
-   This starts a lightweight Node server that serves the canvas UI and a starter `/api/tasks` endpoint.
-4. **Open the app:** Visit http://localhost:3000 to see the canvas, filters, and quick-create form.
+No package install step is needed because the project currently uses only built-in Node modules.
 
-## Optional: GitHub Pages preview
-1. Push this repo to GitHub.
-2. In **Settings → Pages**, choose the `main` branch and the `/ (root)` folder, then save.
-3. The static site will go live with demo tasks. Open the full repo path (example: `https://<username>.github.io/canvas-planner/`).
-   Creating tasks will stay in your browser until the API is online.
-4. When you later deploy the Node server, the page will automatically switch to live mode and save tasks to the server.
+## Start the app
+```bash
+npm start
+```
 
-## Notes
-- Data saves to `data/tasks.json` for now; it is safe to edit or reset.
-- Keep future secrets (Notion/Todoist tokens) in a `.env` file; do not commit it.
-- We will add automated linting, tests, and AI checks (llm.tst) as we integrate APIs.
+Open `http://localhost:3000`.
+
+## Runtime data location
+By default, the server stores editable data here on Windows:
+
+```text
+%LOCALAPPDATA%\MyData\canvas-planner\tasks.json
+```
+
+The repo keeps bundled demo data separately so the open-source base can stay public.
+
+## Optional overrides
+Set one of these environment variables before starting the server if you want a different runtime location:
+
+- `CANVAS_PLANNER_DATA_FILE`
+- `CANVAS_PLANNER_DATA_DIR`
+- `MYDATA_DIR`
+- `PORT`
+- `HOST`
+
+Example:
+
+```powershell
+$env:MYDATA_DIR = 'D:\MyData'
+$env:PORT = '3100'
+npm start
+```
+
+## Verification
+Run:
+
+```bash
+npm run check
+npm test
+```
+
+## GitHub Pages preview
+- Enable Pages on the `main` branch with `/ (root)`.
+- Open the repo-path URL such as `https://<username>.github.io/canvas-planner/`.
+- The preview loads bundled tasks plus browser-only drafts.
+- Live API writes require the Node server to be running somewhere reachable.

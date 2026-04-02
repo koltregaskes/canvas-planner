@@ -1,25 +1,30 @@
 # Usage
 
-This guide explains what works today and what is coming next.
+## Board modes
+- `Stacked board`: responsive card layout that stays clean on laptop and mobile widths.
+- `Freeform canvas`: draggable desktop mode for spatial planning.
 
-## Today’s features
-- **View tasks on a canvas:** Cards show sample tasks from Notion, Todoist, and Canvas sources. Drag them to rearrange.
-- **Filter views:** Toggle source, level (project/task/subtask), status, and search by title or tag.
-- **Visible fields:** Turn due date, priority, and source labels on/off without a page reload.
-- **Create tasks:** Use the form on the right to add a task. If the API is live, it saves to `data/tasks.json`; if not, it saves to your browser so you do not lose work.
-- **Layout controls:** Reset layout, switch auto/manual layout, and double-click a card to focus it.
+The app automatically falls back to the stacked layout on narrow screens.
 
-## How to run
-- Start the app: `npm start`
-- Open: http://localhost:3000
-- GitHub Pages: once enabled in repo settings, open your Pages URL with the repo path (example: `https://<username>.github.io/canvas-planner/`) to see the static preview (demo data + your browser drafts).
+## Filters
+- Search by task title or tag.
+- Filter by source, level, and status.
+- Hide or show due date, priority, source, and tags on the cards.
 
-## Coming soon
-- **Edit inline:** Click a card to edit its fields and sync back to Notion/Todoist.
-- **AI helpers:** Summaries, smart grouping, and prioritization with prompt tests via `llm.tst`.
-- **Webhook sync:** Automatic refresh when Notion or Todoist updates.
+## Editing workflow
+- Click `New task` to open a clean editor.
+- Click any card to inspect or edit it.
+- Use `Parent task` to connect subtasks or child work.
+- Delete removes the task and detaches any children instead of leaving broken parent links.
 
-## Data limits and considerations (for upcoming integrations)
-- **Notion:** API rate limit around 3 requests/second per integration. Use batching and incremental updates.
-- **Todoist:** Common rate limit around 50 requests/minute; the sync endpoint reduces calls.
-- **Large workspaces:** For many tasks, we will add pagination, background sync jobs, and virtualization on the canvas for speed.
+## Storage behavior
+- With the API live: tasks save into your private runtime file.
+- Without the API: bundled preview tasks stay read-only, and new drafts save to browser local storage.
+- If you later reconnect the API, saving a browser draft promotes it into the live runtime store.
+
+## Useful commands
+```bash
+npm start
+npm run check
+npm test
+```

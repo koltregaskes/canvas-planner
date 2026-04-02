@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node src/server.js",
-    "check": "node -c src/server.js"
+    "check": "node --check src/server.js && node --check src/app.js && node --check src/config.js && node --check src/task-store.js && node --check public/app.js",
+    "test": "node --test"
   },
   "keywords": [
     "tasks",

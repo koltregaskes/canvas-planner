@@ -7,7 +7,10 @@
     "status": "in-progress",
     "priority": "high",
     "dueDate": "2024-07-01",
-    "tags": ["notion", "mapping"],
+    "tags": [
+      "notion",
+      "mapping"
+    ],
     "parentId": null
   },
   {
@@ -18,7 +21,9 @@
     "status": "todo",
     "priority": "medium",
     "dueDate": "2024-07-03",
-    "tags": ["fields"],
+    "tags": [
+      "fields"
+    ],
     "parentId": "notion-1"
   },
   {
@@ -29,7 +34,9 @@
     "status": "in-progress",
     "priority": "medium",
     "dueDate": "2024-06-28",
-    "tags": ["todoist"],
+    "tags": [
+      "todoist"
+    ],
     "parentId": null
   },
   {
@@ -40,7 +47,9 @@
     "status": "todo",
     "priority": "high",
     "dueDate": null,
-    "tags": ["design"],
+    "tags": [
+      "design"
+    ],
     "parentId": null
   },
   {
@@ -51,7 +60,9 @@
     "status": "todo",
     "priority": "medium",
     "dueDate": "2024-07-05",
-    "tags": ["ux"],
+    "tags": [
+      "ux"
+    ],
     "parentId": "canvas-1"
   }
 ]
