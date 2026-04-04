@@ -46,8 +46,8 @@ You can override the runtime location with:
 - Decide whether browser drafts should auto-sync into the API or remain manual.
 
 ## Key docs
+- `ARCHITECTURE.md`
 - `SETUP.md`
 - `USAGE.md`
 - `TROUBLESHOOTING.md`
 - `CHANGELOG.md`
-- `PLAN.md`
