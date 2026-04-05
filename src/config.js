@@ -54,7 +54,7 @@ function createConfig(env = process.env) {
   return {
     appName: APP_NAME,
     appSlug: APP_SLUG,
-    host: env.HOST || '0.0.0.0',
+    host: env.HOST || '127.0.0.1',
     port: Number.isNaN(parsedPort) ? 3000 : parsedPort,
     repoRoot: REPO_ROOT,
     publicDir: PUBLIC_DIR,

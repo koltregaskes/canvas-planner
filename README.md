@@ -8,6 +8,7 @@ Canvas Planner is a visual planning workspace for arranging tasks on a flexible 
 - The repo still includes bundled seed data for open-source previews and GitHub Pages demos.
 - The UI supports search, filtering, stacked or freeform layout, create/edit/delete, parent-child links, and browser-only drafts when the API is offline.
 - Offline browser drafts can be promoted into the live API once the server is available again.
+- The public app shell is now installable as a lightweight PWA for desktop or Android.
 
 ## Product Direction
 
@@ -24,6 +25,8 @@ Canvas Planner is one of the clearest candidates to graduate into the Agent Work
    npm run check
    npm test
    ```
+
+By default the local server now binds to `127.0.0.1`. If you ever want to expose it to your own private network later, set `HOST` explicitly to your Tailscale IP.
 
 ## Storage model
 - Repo seed data: `data/tasks.json`

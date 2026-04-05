@@ -1,0 +1,18 @@
+{
+  "name": "Canvas Planner",
+  "short_name": "Canvas",
+  "description": "A visual planning workspace for arranging tasks on a flexible board with private local storage.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f1724",
+  "theme_color": "#0f1724",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

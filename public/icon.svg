@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f1724"/>
+      <stop offset="100%" stop-color="#203244"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#8fd8c9"/>
+      <stop offset="100%" stop-color="#f3fbff"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+  <rect x="92" y="98" width="328" height="316" rx="40" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)" stroke-width="8"/>
+  <rect x="132" y="146" width="102" height="92" rx="22" fill="#8fd8c9"/>
+  <rect x="252" y="146" width="128" height="28" rx="14" fill="#dbe6f2"/>
+  <rect x="252" y="190" width="92" height="24" rx="12" fill="rgba(219,230,242,.72)"/>
+  <rect x="132" y="270" width="248" height="28" rx="14" fill="url(#accent)"/>
+  <rect x="132" y="322" width="180" height="24" rx="12" fill="rgba(219,230,242,.72)"/>
+</svg>
