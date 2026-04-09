@@ -54,3 +54,9 @@ You can override the runtime location with:
 - `USAGE.md`
 - `TROUBLESHOOTING.md`
 - `CHANGELOG.md`
+
+## Local-Only Files
+
+- `.autolab/` is used for internal AutoResearch and should remain untracked
+- `.env*` files are local-only
+- `.local/` and `*.local.md` are for planning notes and are ignored
