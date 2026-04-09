@@ -37,3 +37,13 @@ planning-local/
 *.tmp
 *.bak
 *.backup
+
+# AutoResearch
+.autolab/
+
+# Env
+.env.*
+!.env.example
+
+# Local launch helpers
+start.cmd
