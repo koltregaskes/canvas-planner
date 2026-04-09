@@ -143,6 +143,31 @@
               </p>
             </section>
 
+            <section class="stack-card">
+              <p class="stack-title">Quick exports</p>
+              <p class="panel-note">Capture a portable snapshot of the current board state.</p>
+              <div class="form-actions">
+                <button id="copyExportBtn" class="button button-ghost" type="button">Copy export JSON</button>
+                <button id="downloadExportBtn" class="button button-ghost" type="button">Download JSON</button>
+              </div>
+            </section>
+
+            <section class="stack-card">
+              <p class="stack-title">New board from template</p>
+              <p class="panel-note">Seed a clean, local-only board without touching the live API.</p>
+              <label class="field">
+                <span class="field-label">Template</span>
+                <select id="templateSelect">
+                  <option value="launch">Launch sprint</option>
+                  <option value="content">Content rollout</option>
+                  <option value="research">Research queue</option>
+                </select>
+              </label>
+              <div class="form-actions">
+                <button id="applyTemplateBtn" class="button button-solid" type="button">Create from template</button>
+              </div>
+            </section>
+
             <form id="taskForm" class="task-form">
               <label class="field">
                 <span class="field-label">Title</span>

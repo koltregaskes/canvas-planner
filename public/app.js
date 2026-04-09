@@ -74,6 +74,10 @@ const elements = {
   taskDueDate: document.getElementById('taskDueDate'),
   taskParentId: document.getElementById('taskParentId'),
   taskTags: document.getElementById('taskTags'),
+  copyExportButton: document.getElementById('copyExportBtn'),
+  downloadExportButton: document.getElementById('downloadExportBtn'),
+  templateSelect: document.getElementById('templateSelect'),
+  applyTemplateButton: document.getElementById('applyTemplateBtn'),
 };
 
 function assetUrl(relativePath) {
@@ -160,6 +164,103 @@ function readJsonStorage(key, fallbackValue) {
 
 function writeJsonStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
+}
+
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    const helper = document.createElement('textarea');
+    helper.value = text;
+    helper.setAttribute('readonly', 'readonly');
+    helper.style.position = 'absolute';
+    helper.style.left = '-9999px';
+    document.body.appendChild(helper);
+    helper.select();
+    document.execCommand('copy');
+    document.body.removeChild(helper);
+  }
+}
+
+function downloadJson(filename, payload) {
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function buildExportPayload() {
+  return {
+    version: '1.1.0',
+    exportedAt: new Date().toISOString(),
+    layout: {
+      autoLayout: state.autoLayout,
+      positions: state.positions,
+    },
+    filters: {
+      source: Array.from(state.filters.source),
+      level: Array.from(state.filters.level),
+      status: Array.from(state.filters.status),
+      search: state.filters.search,
+    },
+    visibleFields: { ...state.visibleFields },
+    tasks: state.tasks,
+  };
+}
+
+const TEMPLATE_DEFS = {
+  launch: {
+    title: 'Launch sprint',
+    tasks: [
+      { title: 'Define launch scope', level: 'project', status: 'todo', priority: 'high', tags: ['launch', 'scope'] },
+      { title: 'UX polish sweep', level: 'task', status: 'todo', priority: 'medium', tags: ['ux', 'polish'] },
+      { title: 'PWA readiness checks', level: 'task', status: 'todo', priority: 'high', tags: ['pwa', 'qa'] },
+      { title: 'Release notes draft', level: 'task', status: 'todo', priority: 'medium', tags: ['release', 'docs'] },
+      { title: 'Launch checklist review', level: 'task', status: 'todo', priority: 'medium', tags: ['review'] },
+    ],
+  },
+  content: {
+    title: 'Content rollout',
+    tasks: [
+      { title: 'Define content theme', level: 'project', status: 'todo', priority: 'high', tags: ['content'] },
+      { title: 'Asset list + references', level: 'task', status: 'todo', priority: 'medium', tags: ['assets'] },
+      { title: 'Prompt pack draft', level: 'task', status: 'todo', priority: 'medium', tags: ['prompts'] },
+      { title: 'Publishing checklist', level: 'task', status: 'todo', priority: 'medium', tags: ['publish'] },
+      { title: 'Post-launch review', level: 'task', status: 'todo', priority: 'low', tags: ['review'] },
+    ],
+  },
+  research: {
+    title: 'Research queue',
+    tasks: [
+      { title: 'Source scan', level: 'project', status: 'todo', priority: 'medium', tags: ['research'] },
+      { title: 'Evaluate top 3 tools', level: 'task', status: 'todo', priority: 'medium', tags: ['evaluation'] },
+      { title: 'Draft insights summary', level: 'task', status: 'todo', priority: 'medium', tags: ['summary'] },
+      { title: 'Action items', level: 'task', status: 'todo', priority: 'medium', tags: ['actions'] },
+    ],
+  },
+};
+
+function buildTemplateDrafts(templateKey) {
+  const template = TEMPLATE_DEFS[templateKey] || TEMPLATE_DEFS.launch;
+  const timestamp = Date.now();
+  return template.tasks.map((task, index) => ({
+    id: `local-template-${timestamp}-${index}`,
+    title: task.title,
+    source: 'canvas',
+    level: task.level || 'task',
+    status: task.status || 'todo',
+    priority: task.priority || 'medium',
+    dueDate: null,
+    tags: task.tags || [],
+    parentId: null,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  }));
 }
 
 function readLocalDrafts() {
@@ -715,6 +816,28 @@ function setupActions() {
   elements.newTaskButton.addEventListener('click', clearSelection);
   elements.clearSelectionButton.addEventListener('click', clearSelection);
   elements.deleteTaskButton.addEventListener('click', deleteSelectedTask);
+  elements.copyExportButton.addEventListener('click', async () => {
+    const payload = buildExportPayload();
+    await copyToClipboard(JSON.stringify(payload, null, 2));
+    window.alert('Export JSON copied to clipboard.');
+  });
+  elements.downloadExportButton.addEventListener('click', () => {
+    const payload = buildExportPayload();
+    downloadJson(`canvas-planner-${new Date().toISOString().split('T')[0]}.json`, payload);
+  });
+  elements.applyTemplateButton.addEventListener('click', () => {
+    const templateKey = elements.templateSelect.value;
+    const template = TEMPLATE_DEFS[templateKey] || TEMPLATE_DEFS.launch;
+    const confirmMessage = state.apiAvailable
+      ? `Create a local draft board from "${template.title}"? Live API data will stay unchanged.`
+      : `Replace browser drafts with the "${template.title}" template?`;
+    if (!window.confirm(confirmMessage)) {
+      return;
+    }
+    saveLocalDrafts(buildTemplateDrafts(templateKey));
+    state.selectedTaskId = null;
+    refreshAll();
+  });
 
   elements.taskForm.addEventListener('submit', async (event) => {
     event.preventDefault();
