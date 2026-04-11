@@ -12,6 +12,8 @@ pnpm-debug.log*
 # Logs
 logs
 *.log
+tmp-*.out
+tmp-*.err
 
 # Build outputs
 .next
